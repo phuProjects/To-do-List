@@ -26,7 +26,7 @@ while run:
     print("3. list the tasks")
     print("4. Quit")
     option = int(input("Choice: "))
-
+    
     if option == 1:
         addTask()
     elif option == 2:
