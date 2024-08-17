@@ -1,39 +1,31 @@
-print("Welcome to your To-do list!")
+class Todo_list:
+    def __init__(self):
+        self.task_list = []
 
-def addTask():
-    task = input("Add your task here: ")
-    todo_list.append(task)
+    def add(self, task):
+        self.task_list.append(task)
+        print(f"{task} has been added to list.")
 
-def removeTask():
-    listTask()
-    remove = int(input("The task you wanna remove (#): "))
-    todo_list.pop(remove-1)
-    print(f"Task #{remove} has been removed.")
-    
-def listTask():
-    print("\nHere are your tasks: ")
-    for i, val in enumerate(todo_list, start=1):
-        print(f"#{i}. {val}")
+    def remove(self, task_remove):
+        if self.task_list:
+            self.task_list.remove(task_remove)
+            print(f"{task_remove} has been removed.")
+        else:
+            print("Your list is empty.")
 
-todo_list = []
-run = True
+    def show_list(self):
+        if self.task_list:
+            for index, value in enumerate(self.task_list, start=1):
+                print(f"#{index}. {value}")
+        else:
+            print("Your list is empty.")
 
-while run:
-    print("\nSelect the follow option: ")
-    print("------------------")
-    print("1. add task")
-    print("2. remove task")
-    print("3. list the tasks")
-    print("4. Quit")
-    option = int(input("Choice: "))
-    
-    if option == 1:
-        addTask()
-    elif option == 2:
-        removeTask()
-    elif option == 3:
-        listTask()
-    elif option == 4:
-        run = False
 
-print("\nGoodbye!")
+
+todo_list = Todo_list()
+todo_list.add("Eat")
+todo_list.add("Sleep")
+todo_list.add("Walk")
+todo_list.show_list()
+todo_list.remove("Eat")
+todo_list.show_list()
