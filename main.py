@@ -20,12 +20,42 @@ class Todo_list:
         else:
             print("Your list is empty.")
 
+    def clear_list(self):
+        if self.task_list:
+            self.task_list.clear()
+        else:
+            print("Your list is already empty.")
+
+    def load_task(self,file_name):
+        with open(file_name, 'r') as file:
+            self.task_list = [line.strip() for line in file]
+            print("Tasks has been loaded.")
+
+    def save_task(self,file_name):
+        with open(file_name, 'w') as file:
+            for task in self.task_list:
+                file.write(f"{task}\n")
+        print("Your tasks has been saved.")
 
 
-todo_list = Todo_list()
-todo_list.add("Eat")
-todo_list.add("Sleep")
-todo_list.add("Walk")
-todo_list.show_list()
-todo_list.remove("Eat")
-todo_list.show_list()
+
+daily_todo_list = Todo_list()
+daily_todo_list.add("work")
+daily_todo_list.add("read")
+daily_todo_list.add("run")
+
+daily_todo_list.save_task("dailyTasks.txt")
+daily_todo_list.load_task("dailyTasks.txt")
+
+weekend_todo_list = Todo_list()
+weekend_todo_list.add("Sleep")
+weekend_todo_list.add("Game")
+weekend_todo_list.add("Eat")
+
+weekend_todo_list.save_task("weekendTasks.txt")
+weekend_todo_list.load_task("weekendTasks.txt")
+
+daily_todo_list.show_list()
+weekend_todo_list.show_list()
+
+
